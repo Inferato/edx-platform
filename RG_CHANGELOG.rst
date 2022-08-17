@@ -12,8 +12,16 @@ Changed
 - RG-LMS gitlab MR template renamed to the Default template, some minor
   changes to the template were also added.
 
+- Remove RG-specific settings that were moved to deployment `RGOeX-1713 <https://youtrack.raccoongang.com/issue/RGOeX-1713>`_
+
+  - This reverts changes from the `RGOeX-687 <https://youtrack.raccoongang.com/issue/RGOeX-687>`_
+
 Added
 -----
+
+- Add modified favicon redirect view to be able to use the themed version `RGOeX-771 <https://youtrack.raccoongang.com/issue/RGOeX-771>`_ `RGOeX-1564 <https://youtrack.raccoongang.com/issue/RGOeX-1564>`_
+
+  - This requires modifications in nginx configurations because favicon url was redifined there for some reason
 
 - Add ability to notify Credentials about received honor course certificate `RGOeX-1413 <https://youtrack.raccoongang.com/issue/RGOeX-1413>`_
 
