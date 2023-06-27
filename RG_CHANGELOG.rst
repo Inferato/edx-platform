@@ -8,6 +8,10 @@ The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`
 [Unreleased]
 ************
 
+Changed
+=======
+* RG custom settings were moved to the rg-openedx-plugin and requirements were moved to deploymet `RGOeX-25959 <https://youtrack.raccoongang.com/issue/RGOeX-25959>`_
+
 Fixes
 =====
 
