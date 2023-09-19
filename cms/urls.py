@@ -8,6 +8,7 @@ from django.conf.urls.static import static
 from django.contrib.admin import autodiscover as django_autodiscover
 from django.urls import path, re_path
 from django.utils.translation import gettext_lazy as _
+from django.views.generic.base import RedirectView
 from auth_backends.urls import oauth2_urlpatterns
 from edx_api_doc_tools import make_docs_urls
 from django.contrib import admin
@@ -19,9 +20,9 @@ from cms.djangoapps.contentstore import toggles
 from cms.djangoapps.contentstore import views as contentstore_views
 from cms.djangoapps.contentstore.views.organization import OrganizationListView
 from openedx.core.apidocs import api_info
-from openedx.core.djangoapps.common_views.branding import FaviconRedirectView
 from openedx.core.djangoapps.password_policy import compliance as password_policy_compliance
 from openedx.core.djangoapps.password_policy.forms import PasswordPolicyAwareAdminAuthForm
+from openedx.core.djangoapps.site_configuration import helpers as configuration_helpers
 from openedx.core import toggles as core_toggles
 
 
@@ -338,6 +339,7 @@ urlpatterns += [
     path('api/contentstore/', include('cms.djangoapps.contentstore.rest_api.urls'))
 ]
 # Favicon
+favicon_path = configuration_helpers.get_value('favicon_path', settings.FAVICON_PATH)  # pylint: disable=invalid-name
 urlpatterns += [
-    re_path(r'^favicon\.ico$', FaviconRedirectView.as_view()),
+    re_path(r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + favicon_path, permanent=True)),
 ]

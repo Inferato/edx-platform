@@ -10,6 +10,10 @@ The format is based on `Keep a Changelog <https://keepachangelog.com/en/1.0.0/>`
 
 Changed
 =======
+* Move changes related to favicon redirection into the rg-openedx-plugin `RGOeX-26060 <https://youtrack.raccoongang.com/issue/RGOeX-26060>`_
+
+  * reverts changes from the `favicon redirect fix <https://gitlab.raccoongang.com/owlox-team/productsforge/oex/edx-platform/-/commit/3bb2c3f237e2fce7753a417f881c0b1d8832aaec>`_ - it should be dropped when rebasing on upstream next time.
+
 * RG custom settings were moved to the rg-openedx-plugin and requirements were moved to deploymet `RGOeX-25959 <https://youtrack.raccoongang.com/issue/RGOeX-25959>`_
 
 Fixes
