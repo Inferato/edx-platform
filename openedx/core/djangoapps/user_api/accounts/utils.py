@@ -13,8 +13,8 @@ from completion.models import BlockCompletion
 from completion.waffle import ENABLE_COMPLETION_TRACKING_SWITCH
 from django.conf import settings
 from django.utils.translation import gettext as _
-from edx_django_utils.plugins import pluggable_override
-from edx_django_utils.user import generate_password
+from edx_django_utils.plugins import pluggable_override  # lint-amnesty, pylint: disable=import-error
+from edx_django_utils.user import generate_password  # lint-amnesty, pylint: disable=import-error
 from social_django.models import UserSocialAuth
 
 from common.djangoapps.student.models import AccountRecovery, Registration, get_retired_email_by_email
