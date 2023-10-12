@@ -104,7 +104,6 @@ def _get_username_from_social_link(platform_name, new_social_link):
     return username
 
 
-
 def _is_valid_social_username(value):
     """
     Given a particular string, returns whether the string can be considered a safe username.
