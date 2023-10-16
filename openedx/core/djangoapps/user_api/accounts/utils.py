@@ -13,8 +13,7 @@ from completion.models import BlockCompletion
 from completion.waffle import ENABLE_COMPLETION_TRACKING_SWITCH
 from django.conf import settings
 from django.utils.translation import gettext as _
-from edx_django_utils.plugins import pluggable_override  # lint-amnesty, pylint: disable=import-error
-from edx_django_utils.user import generate_password  # lint-amnesty, pylint: disable=import-error
+from edx_django_utils.user import generate_password
 from social_django.models import UserSocialAuth
 
 from common.djangoapps.student.models import AccountRecovery, Registration, get_retired_email_by_email
@@ -87,15 +86,14 @@ def _get_username_from_social_link(platform_name, new_social_link):
     if not new_social_link:
         return new_social_link
 
-    # Parse the social link as if it were a URL.
-    parse_result = urlparse(new_social_link)
-    url_domain_and_path = parse_result[1] + parse_result[2]
     url_stub = re.escape(settings.SOCIAL_PLATFORMS[platform_name]['url_stub'])
-    username_match = re.search(r'(www\.)?' + url_stub + r'(?P<username>.*?)[/]?$', url_domain_and_path, re.IGNORECASE)
+    username_match = re.search(r'(www\.)?' + url_stub + r'(?P<username>.+)(\?.*)?$', new_social_link, re.IGNORECASE)
+
     if username_match:
         username = username_match.group('username')
     else:
         username = new_social_link
+
 
     # Ensure the username is a valid username.
     if not _is_valid_social_username(username):
